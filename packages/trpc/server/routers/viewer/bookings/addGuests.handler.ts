@@ -216,9 +216,6 @@ export async function sanitizeAndFilterGuests(
   const uniqueGuestEmails = deduplicatedGuests.filter((email) => {
     const baseGuestEmail = extractBaseEmail(email).toLowerCase();
     return (
-      !booking.attendees.some(
-        (attendee) => extractBaseEmail(attendee.email).toLowerCase() === baseGuestEmail
-      ) &&
       !blacklistedGuestEmails.includes(baseGuestEmail) &&
       !emailToRequiresVerification.get(baseGuestEmail)
     );
